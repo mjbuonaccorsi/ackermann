@@ -1,5 +1,6 @@
 package repo;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,7 +10,11 @@ import model.Ackermann;
 public class ExternalCallImpl implements IExternalCall {
 	
 	@Override
-	public int callAckermann(int m, int n) {
+	@Cacheable("ackerman")
+	public Ackermann callAckermann(int m, int n) {
+		Ackermann resp = new Ackermann();
+		resp.setM(m);
+		resp.setN(n);
 		int result=0;
         RestTemplate restTemplate = new RestTemplate();
         try {
@@ -17,9 +22,10 @@ public class ExternalCallImpl implements IExternalCall {
         result = res.getResult();
         System.out.println("GOT A RESULT="+res.getResult());
         } catch (Throwable t) {
-        	System.out.println("BAAADDDDDD");
+        	System.out.println("BAAADDDDDD"+t.getMessage());
         }
-		return result;
+        resp.setResult(result);
+		return resp;
 	}
 
 }
