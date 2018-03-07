@@ -15,7 +15,14 @@ public class AckermannController {
 	
 	@Autowired
 	private IExternalCall externalCall;
-	
+
+
+//    @RequestMapping("/service-instances/{applicationName}")
+//    public List<ServiceInstance> serviceInstancesByApplicationName(
+//            @PathVariable String applicationName) {
+//        return this.discoveryClient.getInstances(applicationName);
+//    }
+
 
 	@RequestMapping("/ackermann")
 	public Ackermann ackermann(@RequestParam(value="M") int m, @RequestParam(value="N") int n) {

@@ -2,3 +2,7 @@ initial/.settings/
 initial/target/
 initial/.project
 initial/.classpath
+serviceRegistry/.project
+serviceRegistry/.classpath
+serviceRegistry/.settings/
+serviceRegistry/target/
