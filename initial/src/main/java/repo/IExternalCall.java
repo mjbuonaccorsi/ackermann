@@ -1,7 +1,9 @@
 package repo;
 
+import model.Ackermann;
+
 public interface IExternalCall {
 	
-	public int callAckermann(int m, int n); 
+	public Ackermann callAckermann(int m, int n); 
 
 }
